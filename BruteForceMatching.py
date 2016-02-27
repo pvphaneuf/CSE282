@@ -6,7 +6,7 @@ import kmers
 SW_SCORE_THRESHOLD = 15
 
 
-def brute_force_mapping(A_kmer_list, B_kmer_list):
+def get_brute_force_mapping(A_kmer_list, B_kmer_list):
 
     mapping_list = []
 
@@ -46,7 +46,7 @@ def main():
 
     design_kmer_list = kmers.get_design_kmers()
 
-    mapping_list = brute_force_mapping(sequence_kmer_list, design_kmer_list)
+    mapping_list = get_brute_force_mapping(sequence_kmer_list, design_kmer_list)
 
     print(len(mapping_list))
 

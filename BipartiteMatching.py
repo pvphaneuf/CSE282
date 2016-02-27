@@ -5,7 +5,7 @@ from skbio.alignment import StripedSmithWaterman
 import networkx
 
 
-def bipartite_matching(S_kmer_list, V_kmer_list):
+def get_bipartite_matching(S_kmer_list, V_kmer_list):
 
     S_node_list = []
     V_node_list = []
@@ -95,7 +95,7 @@ def main():
 
     design_kmer_list = kmers.get_design_kmers()
 
-    mapping_list = bipartite_matching(sequence_kmer_list, design_kmer_list)
+    mapping_list = get_bipartite_matching(sequence_kmer_list, design_kmer_list)
 
     print(len(mapping_list))
 

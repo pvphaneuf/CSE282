@@ -1,6 +1,8 @@
 import kmers
 
-from BruteForceMatching import brute_force_mapping
+from BruteForceMatching import get_brute_force_mapping
+
+from BipartiteMatching import get_bipartite_matching
 
 
 def main():
@@ -9,7 +11,7 @@ def main():
 
     design_kmer_list = kmers.get_design_kmers()
 
-    brute_force_mapping_list = brute_force_mapping(sequence_kmer_list, design_kmer_list)
+    brute_force_mapping_list = get_brute_force_mapping(sequence_kmer_list, design_kmer_list)
 
     print(len(brute_force_mapping_list))
 
