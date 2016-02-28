@@ -106,9 +106,9 @@ def findHierarchicalClusters(seqKmers,clusterSize, isClusterSizeHardStop):
     return clusters
 
 
-def get_cluster_dict(sequence_kmer_list, design_kmer_list):
+def get_cluster_dict(sequence_kmer_list, design_kmer_list, isClusterSizeHardStop):
 
-    cluster_dict = findHierarchicalClusters(sequence_kmer_list, len(design_kmer_list))
+    cluster_dict = findHierarchicalClusters(sequence_kmer_list, len(design_kmer_list), isClusterSizeHardStop)
 
     return cluster_dict
 
