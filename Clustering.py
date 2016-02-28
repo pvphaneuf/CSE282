@@ -71,13 +71,13 @@ def findClosestClusters(clusters):
     return closestClusters
 
 
-def findHierarchicalClusters(seqKmers,clusterSize):
+def findHierarchicalClusters(seqKmers, clusterSize, isClusterSizeHardStop):
     clusters = formInitialClusters(seqKmers)
     print len(clusters)
     print "initial clusters formed"
     while len(clusters) > clusterSize:
         closestClusters = findClosestClusters(clusters)
-        if closestClusters == None:
+        if not isClusterSizeHardStop and closestClusters is not None:
             break
         clusterMembers = clusters[closestClusters[0]]
         clusterMembers.extend(clusters[closestClusters[1]])
@@ -88,9 +88,9 @@ def findHierarchicalClusters(seqKmers,clusterSize):
     return clusters
 
 
-def get_cluster_dict(sequence_kmer_list, design_kmer_list):
+def get_cluster_dict(sequence_kmer_list, design_kmer_list, isClusterSizeHardStop):
 
-    cluster_dict = findHierarchicalClusters(sequence_kmer_list, len(design_kmer_list))
+    cluster_dict = findHierarchicalClusters(sequence_kmer_list, len(design_kmer_list), isClusterSizeHardStop)
 
     return cluster_dict
 
