@@ -77,6 +77,8 @@ def findHierarchicalClusters(seqKmers,clusterSize):
     print "initial clusters formed"
     while len(clusters) > clusterSize:
         closestClusters = findClosestClusters(clusters)
+        if closestClusters == None:
+            break
         clusterMembers = clusters[closestClusters[0]]
         clusterMembers.extend(clusters[closestClusters[1]])
         consensusString = findConsensusString(clusterMembers)
