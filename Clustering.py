@@ -77,7 +77,7 @@ def findHierarchicalClusters(seqKmers, clusterSize, isClusterSizeHardStop):
     print "initial clusters formed"
     while len(clusters) > clusterSize:
         closestClusters = findClosestClusters(clusters)
-        if not isClusterSizeHardStop and closestClusters is not None:
+        if not isClusterSizeHardStop and closestClusters is None:
             break
         clusterMembers = clusters[closestClusters[0]]
         clusterMembers.extend(clusters[closestClusters[1]])
