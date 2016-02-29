@@ -6,7 +6,7 @@ import sys
 
 import copy
 
-import pickle
+# import pickle
 
 
 def formInitialClusters(seqKmers):
@@ -101,9 +101,11 @@ def main():
 
     design_kmer_list = kmers.get_design_kmers()
 
-    cluster_dict = get_cluster_dict(sequence_kmer_list, design_kmer_list)
+    isClusterSizeHardStop = False
 
-    pickle.dump(cluster_dict, open("cluster_dict.p", "wb"))
+    cluster_dict = get_cluster_dict(sequence_kmer_list, design_kmer_list, isClusterSizeHardStop)
+
+    # pickle.dump(cluster_dict, open("cluster_dict.p", "wb"))
 
 
 if __name__ == "__main__":
