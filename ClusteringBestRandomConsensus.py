@@ -85,7 +85,7 @@ def findHierarchicalClusters(seqKmers,clusterSize, isClusterSizeHardStop):
     print "initial clusters formed"
     while len(clusters) > clusterSize:
         closestClusters = findClosestClusters(clusters)
-        if not isClusterSizeHardStop and closestClusters is not None:
+        if not isClusterSizeHardStop and closestClusters is None:
             break
         clusterMembers = clusters[closestClusters[0]]
         clusterMembers.extend(clusters[closestClusters[1]])
@@ -109,7 +109,9 @@ def main():
 
     design_kmer_list = kmers.get_design_kmers()
 
-    cluster_dict = get_cluster_dict(sequence_kmer_list, design_kmer_list)
+    isClusterSizeHardStop = True
+
+    cluster_dict = get_cluster_dict(sequence_kmer_list, design_kmer_list, isClusterSizeHardStop)
 
     # pickle.dump(cluster_dict, open("random_consensus_cluster_dict.p", "wb"))
 
