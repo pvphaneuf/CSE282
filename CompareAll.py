@@ -92,6 +92,17 @@ def main():
 
     design_kmer_list = kmers.get_design_kmers()
 
+    clustering_parameter_list = [ClusteringFeatures.CLUSTER_SIZE_HARD_STOP]
+
+    mapping_paramenter = MappingMethod.BIPARTITE
+
+    mapping_list = get_mapping(sequence_kmer_list,
+                               design_kmer_list,
+                               mapping_paramenter,
+                               clustering_parameter_list)
+
+    len(mapping_list)
+
     # brute_force_mapping_list = get_brute_force_mapping(sequence_kmer_list, design_kmer_list)
     #
     # bipartite_matching_list = get_bipartite_matching(sequence_kmer_list, design_kmer_list)
