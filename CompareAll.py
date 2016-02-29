@@ -1,6 +1,6 @@
 import kmers
 
-from BruteForceMatching import get_brute_force_mapping
+from BruteForceMapping import get_brute_force_mapping
 
 from BipartiteMatching import get_bipartite_matching
 
