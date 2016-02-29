@@ -18,6 +18,19 @@ def get_random_sequence_kmers(count):
     return seqKmers
 
 
+def get_sequence_kmers(input_file):
+
+    input_file_path = os.path.split(__file__)[0]
+    f = open(input_file_path, "r")
+
+    sequence_kmer_list = []
+    for line in f.readlines():
+        kmer = line.strip()
+        sequence_kmer_list.append(kmer)
+
+    return sequence_kmer_list
+
+
 def get_design_kmers():
 
     input_file_path = os.path.split(__file__)[0]
