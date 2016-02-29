@@ -39,8 +39,6 @@ def output_seq_kmer_mapping_list(input_name, consensus_mapping_list, cluster_dic
     output_score_file_name = input_name + "_score.p"
     pickle.dump(score_dict, open(output_score_file_name, "wb"))
 
-    return sequence_kmer_mapping_list
-
 
 
 def main():
@@ -59,24 +57,36 @@ def main():
     for suffix_count in range(suffix_start_count, suffix_end_count + 1):
 
         input_file_name = prefix_500 + '_' + str(suffix_count)
-
-        if input_file_name == "500_2":
-            break
-
         sequence_kmer_list = kmers.get_sequence_kmers(input_file_name)
-
         cluster_dict = Clustering.get_cluster_dict(sequence_kmer_list,
                                                    design_kmer_list,
                                                    use_cluster_size_hard_stop)
 
         consensus_kmer_list = cluster_dict.keys()
-        consensus_mapping_dict = get_bipartite_matching(consensus_kmer_list, design_kmer_list)
+        consensus_mapping_list = get_bipartite_matching(consensus_kmer_list, design_kmer_list)
+        output_seq_kmer_mapping_list(input_file_name, consensus_mapping_list, cluster_dict)
 
-    # for suffix_count in range(suffix_start_count, suffix_end_count + 1):
-    #     input_file_name = prefix_1000 + '_' + str(suffix_count)
-    #
-    # for suffix_count in range(suffix_start_count, suffix_end_count + 1):
-    #     input_file_name = prefix_2000 + '_' + str(suffix_count)
+    for suffix_count in range(suffix_start_count, suffix_end_count + 1):
+        input_file_name = prefix_1000 + '_' + str(suffix_count)
+        sequence_kmer_list = kmers.get_sequence_kmers(input_file_name)
+        cluster_dict = Clustering.get_cluster_dict(sequence_kmer_list,
+                                                   design_kmer_list,
+                                                   use_cluster_size_hard_stop)
+
+        consensus_kmer_list = cluster_dict.keys()
+        consensus_mapping_list = get_bipartite_matching(consensus_kmer_list, design_kmer_list)
+        output_seq_kmer_mapping_list(input_file_name, consensus_mapping_list, cluster_dict)
+
+    for suffix_count in range(suffix_start_count, suffix_end_count + 1):
+        input_file_name = prefix_2000 + '_' + str(suffix_count)
+        sequence_kmer_list = kmers.get_sequence_kmers(input_file_name)
+        cluster_dict = Clustering.get_cluster_dict(sequence_kmer_list,
+                                                   design_kmer_list,
+                                                   use_cluster_size_hard_stop)
+
+        consensus_kmer_list = cluster_dict.keys()
+        consensus_mapping_list = get_bipartite_matching(consensus_kmer_list, design_kmer_list)
+        output_seq_kmer_mapping_list(input_file_name, consensus_mapping_list, cluster_dict)
 
 
 if __name__ == "__main__":
