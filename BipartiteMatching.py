@@ -84,7 +84,7 @@ def get_bipartite_matching(S_kmer_list, V_kmer_list):
 
             sw_score = sw_score_generator(v_kmer)['optimal_alignment_score']
 
-            match_list.append((s_kmer, v_kmer, sw_score))
+            match_list.append((s_kmer, sw_score, v_kmer))
 
     return match_list
 
