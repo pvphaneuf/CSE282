@@ -21,6 +21,7 @@ def get_random_sequence_kmers(count):
 def get_sequence_kmers(input_file):
 
     input_file_path = os.path.split(__file__)[0]
+    input_file_path += '/data/' + input_file
     f = open(input_file_path, "r")
 
     sequence_kmer_list = []
