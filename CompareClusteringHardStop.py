@@ -52,7 +52,7 @@ def main():
 
     design_kmer_list = kmers.get_design_kmers()
 
-    use_cluster_size_hard_stop = False
+    use_cluster_size_hard_stop = True
 
     for suffix_count in range(suffix_start_count, suffix_end_count + 1):
 
