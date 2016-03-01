@@ -89,6 +89,13 @@ def findHierarchicalClusters(seqKmers, clusterSize, isClusterSizeHardStop):
         else:
             clusters[consensusString] = clusterMembers
             # print(clusters[consensusString])
+
+        if closestClusters[0] != consensusString:
+            del clusters[closestClusters[0]]
+
+        if closestClusters[1] != consensusString:
+            del clusters[closestClusters[1]]
+
         del clusters[closestClusters[0]],clusters[closestClusters[1]]
         print len(clusters)
     return clusters
