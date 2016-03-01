@@ -32,11 +32,11 @@ def output_seq_kmer_mapping_list(input_name, consensus_mapping_list, cluster_dic
 
             sequence_kmer_mapping_list.append((sequence_kmer, consensus_matching_score, design_kmer))
 
-    output_list_file_name = input_name + "_mapping.p"
+    output_list_file_name = "no_hard_stop" + input_name + "_mapping.p"
     pickle.dump(sequence_kmer_mapping_list, open(output_list_file_name, "wb"))
 
     score_dict = {"matching_score_sum": matching_score_sum, "mapping_score_sum": mapping_score_sum}
-    output_score_file_name = input_name + "_score.p"
+    output_score_file_name = "no_hard_stop" + input_name + "_score.p"
     pickle.dump(score_dict, open(output_score_file_name, "wb"))
 
 
