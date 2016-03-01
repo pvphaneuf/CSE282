@@ -52,7 +52,7 @@ def findHammingDistance(a,b):
     return hammingDistance
 
 
-def findClosestClusters(clusters):
+def findClosestClusters(clusters, isClusterSizeHardStop):
     clusterList = clusters.keys()
     distanceMatrix = [[-1 for i in range(len(clusterList))] for j in range(len(clusterList))]
     minDistance = sys.maxint
@@ -66,8 +66,8 @@ def findClosestClusters(clusters):
                     minDistance = distanceMatrix[i][j]
                     closestClusters[0] = clusterList[i]
                     closestClusters[1] = clusterList[j]
-    print "done finding closest clusters to merge"
-    if minDistance > 5:
+    # print "done finding closest clusters to merge"
+    if not isClusterSizeHardStop and minDistance > 5:
         return None
     return closestClusters
 
@@ -75,10 +75,9 @@ def findClosestClusters(clusters):
 def findHierarchicalClusters(seqKmers, clusterSize, isClusterSizeHardStop):
     clusters = formInitialClusters(seqKmers)
     print len(clusters)
-    print "initial clusters formed"
+    # print "initial clusters formed"
     while len(clusters) > clusterSize:
-        closestClusters = findClosestClusters(clusters)
-        print(closestClusters)
+        closestClusters = findClosestClusters(clusters, isClusterSizeHardStop)
         if not isClusterSizeHardStop and closestClusters == None:
             break
         clusterMembers = clusters[closestClusters[0]]
@@ -86,8 +85,10 @@ def findHierarchicalClusters(seqKmers, clusterSize, isClusterSizeHardStop):
         consensusString = findConsensusString(clusterMembers)
         if consensusString in clusters.keys():
             clusters[consensusString].extend(clusterMembers)
+            # print(clusters[consensusString])
         else:
             clusters[consensusString] = clusterMembers
+            # print(clusters[consensusString])
         del clusters[closestClusters[0]],clusters[closestClusters[1]]
         print len(clusters)
     return clusters
