@@ -73,22 +73,22 @@ def findClosestClusters(clusters, isClusterSizeHardStop):
 
 
 def findHierarchicalClusters(seqKmers, clusterSize, isClusterSizeHardStop):
+
     clusters = formInitialClusters(seqKmers)
-    print len(clusters)
-    # print "initial clusters formed"
+
     while len(clusters) > clusterSize:
+
         closestClusters = findClosestClusters(clusters, isClusterSizeHardStop)
+
         if not isClusterSizeHardStop and closestClusters == None:
             break
+
         clusterMembers = clusters[closestClusters[0]]
         clusterMembers.extend(clusters[closestClusters[1]])
+
         consensusString = findConsensusString(clusterMembers)
-        if consensusString in clusters.keys():
-            clusters[consensusString].extend(clusterMembers)
-            # print(clusters[consensusString])
-        else:
-            clusters[consensusString] = clusterMembers
-            # print(clusters[consensusString])
+
+        clusters[consensusString] = clusterMembers
 
         if closestClusters[0] != consensusString:
             del clusters[closestClusters[0]]
@@ -96,8 +96,6 @@ def findHierarchicalClusters(seqKmers, clusterSize, isClusterSizeHardStop):
         if closestClusters[1] != consensusString:
             del clusters[closestClusters[1]]
 
-        del clusters[closestClusters[0]],clusters[closestClusters[1]]
-        print len(clusters)
     return clusters
 
 
