@@ -61,7 +61,7 @@ def main():
         cluster_dict = Clustering.get_cluster_dict(sequence_kmer_list,
                                                    design_kmer_list,
                                                    use_cluster_size_hard_stop)
-
+        pickle.dump(cluster_dict, open("clusters_no_hard_stop" + input_file_name + ".p", "wb"))
         consensus_kmer_list = cluster_dict.keys()
         consensus_mapping_list = get_bipartite_matching(consensus_kmer_list, design_kmer_list)
         output_seq_kmer_mapping_list(input_file_name, consensus_mapping_list, cluster_dict)
@@ -72,7 +72,7 @@ def main():
         cluster_dict = Clustering.get_cluster_dict(sequence_kmer_list,
                                                    design_kmer_list,
                                                    use_cluster_size_hard_stop)
-
+        pickle.dump(cluster_dict, open("clusters_no_hard_stop" + input_file_name + ".p", "wb"))
         consensus_kmer_list = cluster_dict.keys()
         consensus_mapping_list = get_bipartite_matching(consensus_kmer_list, design_kmer_list)
         output_seq_kmer_mapping_list(input_file_name, consensus_mapping_list, cluster_dict)
@@ -83,7 +83,7 @@ def main():
         cluster_dict = Clustering.get_cluster_dict(sequence_kmer_list,
                                                    design_kmer_list,
                                                    use_cluster_size_hard_stop)
-
+        pickle.dump(cluster_dict, open("clusters_no_hard_stop" + input_file_name + ".p", "wb"))
         consensus_kmer_list = cluster_dict.keys()
         consensus_mapping_list = get_bipartite_matching(consensus_kmer_list, design_kmer_list)
         output_seq_kmer_mapping_list(input_file_name, consensus_mapping_list, cluster_dict)
